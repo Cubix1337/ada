@@ -1,0 +1,10 @@
+{
+  "name": "ada-projects",
+  "version": "1.0.0",
+  "description": "Ada projects",
+  "main": "index.html",
+  "repository": "https://github.com/Cubix1337/ada.git",
+  "author": "Tonny",
+  "license": "MIT",
+  "private": false
+}

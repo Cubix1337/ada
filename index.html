@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <a class="skip-button" href="#grid-container">Skip to Content</a>
+    <nav id="nav">
+      <div class="navigation">
+        <a id="hamburger" onclick="openNav()">
+          &#9776;
+        </a>
+        <div class="nav-items">
+          <a>Item 1</a>
+          <a>Item 2</a>
+          <a>Item 3</a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="sidebar">
+      <span class="close-sidebar" onclick="closeNav()"> X</span>
+
+      <a>Item 1</a>
+      <a>Item 2</a>
+      <a>Item 3</a>
+    </div>
+
+    <section id="grid-container">
+      <a name="grid-container"></a>
+      <section class="main">
+        <h1>This is a Heading</h1>
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever
+          since the 1500s, when an unknown printer took a galley of type and
+          scrambled it to make a type specimen book. It has survived not only
+          five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with
+          the release of Letraset sheets containing Lorem Ipsum passages, and
+          more recently with desktop publishing software like Aldus PageMaker
+          including versions of Lorem Ipsum.
+        </p>
+
+        <p>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+          ab illo inventore veritatis et quasi architecto beatae vitae dicta
+          sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+          aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
+          qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
+          dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
+          quia non numquam eius modi tempora incidunt ut labore et dolore magnam
+          aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
+          exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
+          ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
+          ea voluptate velit esse quam nihil molestiae consequatur, vel illum
+          qui dolorem eum fugiat quo voluptas nulla pariatur?
+        </p>
+
+        <p>
+          At vero eos et accusamus et iusto odio dignissimos ducimus qui
+          blanditiis praesentium voluptatum deleniti atque corrupti quos dolores
+          et quas molestias excepturi sint occaecati cupiditate non provident,
+          similique sunt in culpa qui officia deserunt mollitia animi, id est
+          laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita
+          distinctio. Nam libero tempore, cum soluta nobis est eligendi optio
+          cumque nihil impedit quo minus id quod maxime placeat facere possimus,
+          omnis voluptas assumenda est, omnis dolor repellendus. Temporibus
+          autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe
+          eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+          Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
+          voluptatibus maiores alias consequatur aut perferendis doloribus
+          asperiores repellat
+        </p>
+
+        <p>
+          Phasellus accumsan pretium diam, eu sollicitudin massa placerat at.
+          Nunc cursus ornare arcu, vel hendrerit arcu porta sit amet. Nullam
+          sagittis, felis a eleifend auctor, eros erat scelerisque massa, eu
+          ullamcorper justo risus ut lacus. Donec ac interdum sapien. Vestibulum
+          et orci vestibulum, viverra massa eget, mattis eros. Nunc sit amet
+          sollicitudin massa. Praesent consequat nec nulla porttitor bibendum.
+          Ut vel nulla libero.
+        </p>
+
+        <p>
+          Nam lorem felis, semper id bibendum ut, tempus sed nisi. Vivamus at
+          suscipit erat, nec fermentum enim. Cras tincidunt risus nisl. Sed
+          accumsan ex lectus, ut dapibus dui porta vitae. Vestibulum nisi quam,
+          pellentesque non dictum quis, accumsan eu lacus. Integer interdum
+          tempor aliquam. Morbi et pretium arcu. Ut volutpat mi mauris. Proin
+          porttitor augue consequat dictum efficitur. In mollis gravida
+          pellentesque.
+        </p>
+      </section>
+
+      <section class="right">
+        <img
+          src="https://allthatsinteresting.com/wordpress/wp-content/uploads/2014/09/uselessobjectsboots.jpg"
+        />
+        Buy the thing
+      </section>
+    </section>
+
+    <style>
+      html {
+        box-sizing: border-box;
+      }
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+      .skip-button {
+        position: fixed;
+        top: 0;
+        left: 50%;
+      }
+      #nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #059695;
+        width: 100%;
+      }
+
+      .navigation {
+        display: flex;
+        width: 100%;
+      }
+
+      .nav-items {
+        width: 100%;
+        padding-top: 10px;
+        font-size: 3vw;
+        display: flex;
+        justify-content: space-evenly;
+      }
+
+      .nav-items a {
+        padding: 10px;
+      }
+
+      #sidebar {
+        color: white;
+        margin: 0;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #094e66;
+        text-align: left;
+        width: 0;
+        overflow: hidden;
+        transition: 0.5s;
+        z-index: 99999999;
+      }
+
+      #sidebar a {
+        font-family: arial;
+        font-size: 25px;
+        text-decoration: none;
+        padding: 8px 8px 8px 32px;
+        display: block;
+        transition: 0.3s;
+        cursor: pointer;
+        /* transition:ease-in-out; */
+      }
+
+      #sidebar a:hover {
+        color: red;
+        margin-left: 10px;
+        transform: scale(1.1);
+      }
+
+      #sidebar a:first-of-type {
+        margin-top: 50px;
+      }
+      .close-sidebar {
+        font-size: 2.5vw;
+        padding: 16px;
+        margin-bottom: 20px;
+        position: absolute;
+        top: 0;
+        right: 0;
+      }
+
+      header {
+        height: 90px;
+        position: fixed;
+        z-index: 999;
+        top: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background: #1a1a1a;
+      }
+
+      #hamburger {
+        padding-left: 10px;
+        align-self: left;
+        color: black;
+        font-size: 3vw;
+      }
+
+      #grid-container {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-areas:
+          "main main"
+          "footer footer ";
+        max-width: 1270px;
+        margin: 0 auto;
+      }
+      @media (min-width: 972px) {
+        #grid-container {
+          grid-template-columns: 25% 25% 25% 25%;
+          grid-template-areas:
+            ". main main right"
+            "footer footer footer footer";
+        }
+      }
+
+      .main {
+        grid-area: main;
+        text-align: center;
+        margin-top: 75px;
+      }
+
+      .main p {
+        text-align: left;
+        margin: 16px;
+      }
+
+      .right {
+        grid-area: right;
+        text-align: center;
+      }
+
+      .right img {
+        width: 100%;
+        margin: 16px;
+      }
+      .footer {
+        grid-area: footer;
+      }
+    </style>
+
+    <script>
+      var sidebar = document.getElementById("sidebar");
+      var hamburger = document.getElementById("hamburger");
+
+      window.addEventListener("click", function(e) {
+        if (e.target != hamburger) {
+          closeNav();
+        }
+      });
+
+      function openNav() {
+        sidebar.style.width = "25%";
+        document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+      }
+
+      function closeNav() {
+        sidebar.style.width = "0";
+        document.body.style.backgroundColor = "white";
+      }
+    </script>
+  </body>
+</html>
+
+<script></script>
