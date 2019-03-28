@@ -39,14 +39,17 @@
     ctx.stroke();
     x+=1;
     console.log('i am animating')
+
+    if(x<anvas.width){
+        velo = -velo
+    }
 }
 animate();
 })();
+
+
 var x = 30;
-
-
-
-
+var velo = 1;
 
 </script>
 </body>
