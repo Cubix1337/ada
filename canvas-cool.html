@@ -31,27 +31,33 @@
     resizeCanvas();
 
    function animate(){
-    ctx.clearRect(0,0,canvas.width,canvas.height)
     requestAnimationFrame(animate)
+    ctx.clearRect(0,0,innerWidth, innerHeight)
+    
     ctx.beginPath();
-    ctx.arc(x, y, radius, 0, 2 * Math.PI);
+    ctx.arc(x, y, radius, 0, 2 * Math.PI,false);
     ctx.strokeStyle = 'blue'
     ctx.stroke();
     
     console.log('i am animating')
 
-    if(x + radius > canvas.width || x-radius < 0){
-        velo = -velo
+    if(x + radius > innerWidth || x-radius < 0){
+        veloX = -veloX;
     }
+if(y+radius > innerHeight || y-radius <0){
+    veloY = -veloY;
+}
+
     x+=velo;
 }
 animate();
 })();
 
 
-var x = 30;
-var y = 50;
-var velo = 5;
+var x = Math.random() * innerWidth;
+var y = Math.random() * innerHeights;
+var veloX = (Math.random() - 0.5) * 8;
+var veloY = (Math.random() - 0.5) * 8;
 var radius = 40;
 
 </script>
