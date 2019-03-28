@@ -37,12 +37,13 @@
     ctx.arc(x, y, radius, 0, 2 * Math.PI);
     ctx.strokeStyle = 'blue'
     ctx.stroke();
-    x+=velo;
+    
     console.log('i am animating')
 
     if(x + radius > canvas.width || x-radius < 0){
         velo = -velo
     }
+    x+=velo;
 }
 animate();
 })();
