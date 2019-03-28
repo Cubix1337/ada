@@ -13,21 +13,26 @@
 
 
 <script>
+
+
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-ctx.beginPath();
-ctx.arc(95, 50, 40, 0, 2 * Math.PI);
-ctx.stroke();
+var x = 30;
+
 
 function animate(){
+    ctx.clearRect(0,0,innerHeight,innerWidth)
     requestAnimationFrame(animate)
     ctx.beginPath();
-    ctx.arc(200,200,30,0, Math.PI * 2,false);
+    ctx.arc(x, 50, 40, 0, 2 * Math.PI);
     ctx.strokeStyle = 'blue'
     ctx.stroke();
+    x+=1;
     console.log('i am animating')
 }
 animate();
+
+
 </script>
 </body>
 </html>
