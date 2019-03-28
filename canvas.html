@@ -13,7 +13,7 @@
 <script>
 var video = document.getElementById("video");
 var canvas = document.getElementById("canvas");
-var ctx = c.getContext('2d');
+var ctx = canvas.getContext('2d');
 var i;
 
 video.addEventListener('play',function() {i=window.setInterval(function() {ctx.drawImage(video,5,5,260,125)},20);},false);
