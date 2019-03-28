@@ -20,6 +20,16 @@ ctx.beginPath();
 ctx.arc(200,200,30,0, Math.PI * 2,false);
 ctx.strokeStyle = 'blue'
 ctx.stroke();
+
+
+function animate(){
+    requestAnimationFrame(animate)
+    ctx.beginPath();
+    ctx.arc(200,200,30,0, Math.PI * 2,false);
+    ctx.strokeStyle = 'blue'
+    ctx.stroke();
+    console.log('i am animating')
+}
 </script>
 </body>
 </html>
