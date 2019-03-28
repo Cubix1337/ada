@@ -1,0 +1,141 @@
+html {
+    box-sizing: border-box;
+  }
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+  .skip-button {
+    position: fixed;
+    top: 0;
+    left: 50%;
+  }
+  #nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #059695;
+    width: 100%;
+  }
+
+  .navigation {
+    display: flex;
+    width: 100%;
+  }
+
+  .nav-items {
+    width: 100%;
+    padding-top: 10px;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .nav-items a {
+    padding: 10px;
+  }
+
+  #sidebar {
+    color: #F0F0F0;
+    margin: 0;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #094e66;
+    text-align: left;
+    width: 0;
+    overflow: hidden;
+    transition: 0.5s;
+    z-index: 99999999;
+  }
+
+  #sidebar a {
+    font-family: arial;
+    font-size: 25px;
+    text-decoration: none;
+    padding: 8px 8px 8px 32px;
+    display: block;
+    transition: 0.3s;
+    cursor: pointer;
+    /* transition:ease-in-out; */
+  }
+
+  #sidebar a:hover {
+    color: #E8D425;
+    margin-left: 10px;
+    transform: scale(1.1);
+  }
+
+  #sidebar a:first-of-type {
+    margin-top: 50px;
+  }
+  .close-sidebar {
+    font-size: 2.5vw;
+    padding: 16px;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  header {
+    height: 90px;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background: #1a1a1a;
+  }
+
+  #hamburger {
+    padding-left: 10px;
+    align-self: left;
+    color: black;
+    font-size: 3vw;
+  }
+
+  #grid-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+      "main main"
+      "footer footer ";
+    max-width: 1270px;
+    margin: 0 auto;
+  }
+  @media (min-width: 972px) {
+    #grid-container {
+      grid-template-columns: 25% 25% 25% 25%;
+      grid-template-areas:
+        ". main main right"
+        "footer footer footer footer";
+    }
+  }
+
+  .main {
+    grid-area: main;
+    text-align: center;
+    margin-top: 75px;
+  }
+
+  .main p {
+    text-align: left;
+    margin: 16px;
+  }
+
+  .right {
+    grid-area: right;
+    text-align: center;
+  }
+
+  .right img {
+    width: 100%;
+    margin: 16px;
+  }
+  .footer {
+    grid-area: footer;
+  }
