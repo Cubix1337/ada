@@ -7,23 +7,18 @@
   <body>
 <canvas id = 'canvas' style = 'width:100%'>
 </canvas>
-<video id ='video' source='https://www.w3schools.com/html/mov_bbb.mp4' autoplay>
+<video id ='video' source='https://www.w3schools.com/html/mov_bbb.mp4' autoplay style='visibility: hidden'>
 
 </video>
 <script>
-var canvas = document.getElementById('canvas');
-var ctx    = canvas.getContext('2d');
-var video  = document.getElementById('video');
+var video = document.getElementById("video");
+var canvas = document.getElementById("canvas");
+var ctx = c.getContext('2d');
+var i;
 
-video.addEventListener('play', function () {
-    var $this = this; //cache
-    (function loop() {
-        if (!$this.paused && !$this.ended) {
-            ctx.drawImage($this, 0, 0);
-            setTimeout(loop, 1000 / 30); // drawing at 30fps
-        }
-    })();
-}, 0);
+video.addEventListener('play',function() {i=window.setInterval(function() {ctx.drawImage(video,5,5,260,125)},20);},false);
+video.addEventListener('pause',function() {window.clearInterval(i);},false);
+video.addEventListener('ended',function() {clearInterval(i);},false);
 
 </script>
 
