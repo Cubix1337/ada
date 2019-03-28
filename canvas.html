@@ -20,7 +20,7 @@ video.addEventListener('play',function() {i=window.setInterval(function() {ctx.d
 video.addEventListener('pause',function() {window.clearInterval(i);},false);
 video.addEventListener('ended',function() {clearInterval(i);},false);
 
-ctx.drawImage(video,0,0)
+video.play()
 </script>
 
   </body>

@@ -13,54 +13,11 @@
 
 
 <script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext('2d');
 
-function setup() {
-  createCanvas(window.innerWidth, window.innerHeight);
-  rectMode(CENTER);
-  angleMode(DEGREES);
-  colorMode(HSB);
-  noStroke();
-}
-
-function draw() {
-  background(0, 0, 0, 0.1);
-  translate(width/2, height/2);
-  const iterations = 20;
-  for (let i = 0; i < iterations; i++) {
-      rotate(360 / iterations);
-      pattern();
-  }
-}
-
-function pattern() {
-  push();
-  let wave = sin(frameCount);
-  fill(frameCount % 360, 80, 80, 0.2);
-  let x = width / 8 + wave * (width / 16);
-  const boxSize = width / 20;
-  translate(x, 0);
-  rotate(frameCount);
-  rect(0, 0, (wave * boxSize) / 2 + boxSize, (wave * boxSize) / 2 + boxSize);
-  rect(-x, 0, (wave * boxSize) / 2 + boxSize, (wave * boxSize) / 2 + boxSize);
-  const ballChildren = 8;
-  for (let i = 0; i < ballChildren; i++) {
-    rotate(360 / ballChildren);
-    fill((frameCount + (i*10)) % 360, 70, 70, 0.3);
-    ellipse(-width / 6, 0, 20, 20);
-  }
-  const boxChildren = 10;
-  for (let i = 0; i < boxChildren; i++) {
-    rotate(360 / boxChildren);
-    fill((frameCount + (i*20)) % 360, 80, 80, 0.3);
-    rect(-width / 6, 0, 20, 20);
-  }
-  pop();
-}
-
-function windowResized() {
-  setup();
-}
-
+ctx.beginPath();
+ctx.arc(200,200,30,0, Math.PI * 2,)
 </script>
 </body>
 </html>
