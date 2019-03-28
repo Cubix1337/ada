@@ -15,14 +15,23 @@
 <script>
 
 
-var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d");
-canvas.height = window.innerHeight;
-canvas.width = window.innerWidth;
-var x = 30;
+(function() {
+    var canvas = document.getElementById('canvas'),
+            ctx = canvas.getContext('2d');
 
+   
+    window.addEventListener('resize', resizeCanvas, false);
 
-function animate(){
+    function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            
+            drawStuff(); 
+    }
+    resizeCanvas();
+
+   function animate(){
     ctx.clearRect(0,0,canvas.height,canvas.width)
     requestAnimationFrame(animate)
     ctx.beginPath();
@@ -33,6 +42,11 @@ function animate(){
     console.log('i am animating')
 }
 animate();
+})();
+var x = 30;
+
+
+
 
 
 </script>
