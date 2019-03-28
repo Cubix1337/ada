@@ -26,13 +26,12 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
 
-            
             animate(); 
     }
     resizeCanvas();
 
    function animate(){
-    ctx.clearRect(0,0,canvas.height,canvas.width)
+    ctx.clearRect(0,0,canvas.width,canvas.height)
     requestAnimationFrame(animate)
     ctx.beginPath();
     ctx.arc(x, 50, 40, 0, 2 * Math.PI);
