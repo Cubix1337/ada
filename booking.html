@@ -66,7 +66,45 @@
                       <p>Wednesday is the capital of Japan.</p>
                     </div>
                 </div>
+
+
+               
     </section>
+
+    <div id="myModal" class="modal">
+        <div class='modal-content'>
+                <span class="close">&times;</span>
+               <div id='form-container'> <form action="/" method="POST">
+                    
+                        <label for="username">Your name:</label><br>
+                        <input type="text" name="username" placeholder="Your name" />
+                        <br>
+                        <br>
+                            <label for="e-mail">Your e-mail:(please add your parents if you are a student)</label>
+                            <br>
+                            
+                                  <input name="e-mail" placeholder="Please enter your e-mail"></textarea>
+                    <br>
+                    <br>
+                            <select>
+                                    <option value="teacher">Teacher</option>
+                                    <option value="parent">Parent</option>
+                                    <option value="student">Student</option>
+
+                                  </select>
+                                  <br>
+                                  <br>
+                            <button>Submit</button>
+
+                
+                   
+                
+                  </form>  
+                </div> 
+           
+        </div>
+          </div>
+
     <script>
       var sidebar = document.getElementById("sidebar");
       var hamburger = document.getElementById("hamburger");
@@ -89,19 +127,6 @@
     </script>
   </body>
 </html>
-
-
-        <form data-netlify="true">
-            <label for="username">Your name</label>
-            <input type="text" name="username" placeholder="Your name" />
-            <label for="message">Your message</label>
-            <textarea name="message" placeholder="Leave us a short message"></textarea>
-            <button>Submit</button>
-          </form>
-
-
-    </section>
-
 
     <script>
       var sidebar = document.getElementById("sidebar");
@@ -182,7 +207,7 @@ var mondayClass = mondayClasses.map((item, index) => {
               <p class = 'course-name'>`+item.course+`</p>
               <p class='time'>Time: `+item.time+`</p>
               <p class='capacity'>Capacity: `+item.capactity+`</p>
-              <button>Book Now</button>
+              <button onclick ='bookNow()'>Book Now</button>
               </div>` 
 )
 })
@@ -193,7 +218,7 @@ var tuesdayClass = tuesdayClasses.map((item, index) => {
               <p class = 'course-name'>`+item.course+`</p>
               <p class='time'>Time: `+item.time+`</p>
               <p class='capacity'>Capacity: `+item.capactity+`</p>
-              <button>Book Now</button>
+              <button onclick ='bookNow()'>Book Now</button>
               </div>` 
 )
 })
@@ -204,7 +229,7 @@ var wednesdayClass = wednesdayClasses.map((item, index) => {
               <p class = 'course-name'>`+item.course+`</p>
               <p class='time'>Time: `+item.time+`</p>
               <p class='capacity'>Capacity: `+item.capactity+`</p>
-              <button>Book Now</button>
+              <button onclick ='bookNow()'>Book Now</button>
               </div>` 
 )
 })
@@ -215,7 +240,7 @@ var thursdayClass = thursdayClasses.map((item, index) => {
               <p class = 'course-name'>`+item.course+`</p>
               <p class='time'>Time: `+item.time+`</p>
               <p class='capacity'>Capacity: `+item.capactity+`</p>
-              <button>Book Now</button>
+              <button onclick ='bookNow()'>Book Now</button>
               </div>` 
 )
 })
@@ -226,7 +251,7 @@ var fridayClass = fridayClasses.map((item, index) => {
               <p class = 'course-name'>`+item.course+`</p>
               <p class='time'>Time: `+item.time+`</p>
               <p class='capacity'>Capacity: `+item.capactity+`</p>
-              <button>Book Now</button>
+              <button onclick ='bookNow()'>Book Now</button>
               </div>` 
 )
 })
@@ -237,7 +262,6 @@ function setInner(){
   wednesday.innerHTML = wednesdayClass.join('')
   thursday.innerHTML = thursdayClass.join('')
   friday.innerHTML = fridayClass.join('')
-
 
 }
 
@@ -260,6 +284,19 @@ function openCity(evt, cityName) {
 
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
+
+
+var modal = document.getElementById('myModal');
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+
+function bookNow(){
+    modal.style.display='block'
+}
 </script>
   </body>
 </html>
