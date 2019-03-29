@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Random Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel = "stylesheet" type = "text/css" href = "./stylesheets/main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+  </head>
+  <body>
+    <nav id="nav">
+      <div class="navigation">
+        <a id="hamburger" onclick="openNav()">
+            &#9776;
+        </a> 
+        <div class="nav-items">
+          <img src="https://s3-eu-west-1.amazonaws.com/cdn.adacollege.org.uk/NCDS_LOGO_CMYK_01.png" width="50px" height="50px">
+          <h1>Commun-IT</h1>
+        </div>
+      </div>
+    </nav>
+
+    <div id="sidebar">
+      <span class="close-sidebar" onclick="closeNav()"> X</span>
+      <a href="#about-us">About Us</a>
+      <a href='#mission'>Our Mission</a>
+      <a href="#values">Our Values</a>
+      <a href="#courses">Courses</a>
+      <a href="#contact">Contact Us</a>
+    </div>
+
+    <section id="grid-container">
+      <a name="grid-container"></a>
+      <section class="main">
+          <div id='wrapper'>
+            <div class="tab">
+                    <button class="tablinks" onclick="openCity(event, 'Monday')" id="defaultOpen">Monday</button>
+                    <button class="tablinks" onclick="openCity(event, 'Tuesday')">Tuesday</button>
+                    <button class="tablinks" onclick="openCity(event, 'Wednesday')">Wednesday</button>
+                    <button class="tablinks" onclick="openCity(event, 'Thursday')">Thursday</button>
+                    <button class="tablinks" onclick="openCity(event, 'Friday')">Friday</button>
+                  </div>
+                  
+                  <div id="Monday" class="tabcontent">
+                    <div id='test'></div>
+                  </div>
+                  
+                  <div id="Tuesday" class="tabcontent">
+                    <h3>Tuesday</h3>
+                    <p>Tuesday is the capital of France.</p> 
+                  </div>
+                  
+                  <div id="Wednesday" class="tabcontent">
+                    <h3>Wednesday</h3>
+                    <p>Wednesday is the capital of Japan.</p>
+                  </div>
+                
+                
+                  <div id="Thursday" class="tabcontent">
+                      <h3>Wednesday</h3>
+                      <p>Wednesday is the capital of Japan.</p>
+                    </div>
+                
+                
+                  <div id="Friday" class="tabcontent">
+                      <h3>Wednesday</h3>
+                      <p>Wednesday is the capital of Japan.</p>
+                    </div>
+                </div>
+    </section>
+    <script>
+      var sidebar = document.getElementById("sidebar");
+      var hamburger = document.getElementById("hamburger");
+
+      window.addEventListener("click", function(e) {
+        if (e.target != hamburger) {
+          closeNav();
+        }
+      });
+
+      function openNav() {
+        sidebar.style.width = "25%";
+        // document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+      }
+
+      function closeNav() {
+        sidebar.style.width = "0";
+        // document.body.style.backgroundColor = "white";
+      }
+    </script>
+  </body>
+</html>
+
+
+        <form data-netlify="true">
+            <label for="username">Your name</label>
+            <input type="text" name="username" placeholder="Your name" />
+            <label for="message">Your message</label>
+            <textarea name="message" placeholder="Leave us a short message"></textarea>
+            <button>Submit</button>
+          </form>
+
+
+    </section>
+
+
+    <script>
+      var sidebar = document.getElementById("sidebar");
+      var hamburger = document.getElementById("hamburger");
+
+      window.addEventListener("click", function(e) {
+        if (e.target != hamburger) {
+          closeNav();
+        }
+      });
+
+      function openNav() {
+        sidebar.style.width = "25%";
+        document.body.style.backgroundColor = "rgba(0,0,0,0.5)";
+      }
+
+      function closeNav() {
+        sidebar.style.width = "0";
+        document.body.style.backgroundColor = "white";
+      }
+
+
+//classes
+
+var monday = document.getElementById('Monday')
+var tuesday = document.getElementById('Tuesday')
+var wednesday = document.getElementById('Wednesday')
+var thursday = document.getElementById('Thursday')
+var friday = document.getElementById('Friday')
+
+var mondayClasses = [
+{
+  course: 'HTML 101 for 11-16 year olds',
+  time:'16:30 - 17:30',
+  capactity: 20
+}
+]
+
+var tuesdayClasses = [
+{
+  course: 'CSS 101 for 11-16 year olds',
+  time:'16:30 - 17:30',
+  capactity: 15
+}
+]
+
+var wednesdayClasses = [
+{
+  course: 'Javascript 101 for 16 year olds',
+  time:'16:30 - 17:30',
+  capactity: 20
+}
+]
+
+var thursdayClasses = [
+{
+  course: 'Python 101 for 16 year olds',
+  time:'16:30 - 17:30',
+  capactity: 20
+}
+]
+
+var fridayClasses = [
+{
+  course: 'Advanced Python 101 for 16 year olds',
+  time:'16:30 - 17:30',
+  capactity: 20
+}
+]
+
+
+
+
+
+var mondayClass = mondayClasses.map((item, index) => {    
+            return (
+              `<div id='card'>
+              <p class = 'course-name'>`+item.course+`</p>
+              <p class='time'>Time: `+item.time+`</p>
+              <p class='capacity'>Capacity: `+item.capactity+`</p>
+              <button>Book Now</button>
+              </div>` 
+)
+})
+
+var tuesdayClass = tuesdayClasses.map((item, index) => {    
+            return (
+              `<div id='card'>
+              <p class = 'course-name'>`+item.course+`</p>
+              <p class='time'>Time: `+item.time+`</p>
+              <p class='capacity'>Capacity: `+item.capactity+`</p>
+              <button>Book Now</button>
+              </div>` 
+)
+})
+
+var wednesdayClass = wednesdayClasses.map((item, index) => {    
+            return (
+              `<div id='card'>
+              <p class = 'course-name'>`+item.course+`</p>
+              <p class='time'>Time: `+item.time+`</p>
+              <p class='capacity'>Capacity: `+item.capactity+`</p>
+              <button>Book Now</button>
+              </div>` 
+)
+})
+
+var thursdayClass = thursdayClasses.map((item, index) => {    
+            return (
+              `<div id='card'>
+              <p class = 'course-name'>`+item.course+`</p>
+              <p class='time'>Time: `+item.time+`</p>
+              <p class='capacity'>Capacity: `+item.capactity+`</p>
+              <button>Book Now</button>
+              </div>` 
+)
+})
+
+var fridayClass = fridayClasses.map((item, index) => {    
+            return (
+              `<div id='card'>
+              <p class = 'course-name'>`+item.course+`</p>
+              <p class='time'>Time: `+item.time+`</p>
+              <p class='capacity'>Capacity: `+item.capactity+`</p>
+              <button>Book Now</button>
+              </div>` 
+)
+})
+
+function setInner(){
+  monday.innerHTML = mondayClass.join('')
+  tuesday.innerHTML = tuesdayClass.join('')
+  wednesday.innerHTML = wednesdayClass.join('')
+  thursday.innerHTML = thursdayClass.join('')
+  friday.innerHTML = fridayClass.join('')
+
+
+}
+
+setInner()
+
+
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+  </body>
+</html>
+
+<script></script>
