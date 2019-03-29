@@ -13,53 +13,59 @@
 
 
 <script>
+var canvas = document.getElementById('canvas')
+var ctx = canvas.getContext('2d');
 
-
-(function() {
-    var canvas = document.getElementById('canvas'),
-            ctx = canvas.getContext('2d');
-
-   
+(function init() {
     window.addEventListener('resize', resizeCanvas, false);
-
     function resizeCanvas() {
             canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            animate(); 
+            canvas.height = window.innerHeight; 
     }
     resizeCanvas();
+})()
 
-   function animate(){
-    requestAnimationFrame(animate)
-    ctx.clearRect(0,0,innerWidth, innerHeight)
-    
+function Circle(x,y,veloX, VeloY,radius){
+    this.x = Math.random() * innerWidth,
+    this.y = Math.random() * innerHeight,
+    this.veloX = (Math.random() - 0.5) * 15,
+    this.veloY = (Math.random() - 0.5) * 15,
+    this.radius = radius;
+    this.draw = function(){
     ctx.beginPath();
-    ctx.arc(x, y, radius, 0, 2 * Math.PI,false);
+    ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI,false);
     ctx.strokeStyle = 'blue'
     ctx.stroke();
-    
-    console.log('i am animating')
-
-    if(x + radius > innerWidth || x-radius < 0){
-        veloX = -veloX;
     }
-if(y+radius > innerHeight || y-radius <0){
-    veloY = -veloY;
 }
 
-    x+=veloX;
-    y+=veloY;
+var circle = new Circle(0,0,0,0,50)
+console.log( circle)
+   
+function animate(){
+    requestAnimationFrame(animate)
+    ctx.clearRect(0,0,innerWidth, innerHeight)
+    circle.draw();
+   
+
+    if(this.x + this.radius > innerWidth || this.x - this.radius < 0){
+        this.veloX = -this.veloX;
+    }
+if(this.y + this.radius > innerHeight || this.y - this.radius <0){
+    this.veloY = -this.veloY;
 }
+
+    this.x += this.veloX;
+    this.y += this.veloY;
+}
+
 animate();
-})();
 
-
-var x = Math.random() * innerWidth;
-var y = Math.random() * innerHeight;
-var veloX = (Math.random() - 0.5) * 8;
-var veloY = (Math.random() - 0.5) * 8;
-var radius = 40;
+// var x = Math.random() * innerWidth;
+// var y = Math.random() * innerHeight;
+// var veloX = (Math.random() - 0.5) * 15;
+// var veloY = (Math.random() - 0.5) * 15;
+// var radius = 40;
 
 </script>
 </body>

@@ -15,7 +15,7 @@ html {
     position: fixed;
     top: 0;
     left: 0;
-    background: #059695;
+    border-bottom: 5px solid rgb(245,225,52);
     width: 100%;
   }
 
