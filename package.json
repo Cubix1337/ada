@@ -4,7 +4,7 @@
   "description": "Ada projects",
   "main": "index.html",
   "repository": "https://github.com/Cubix1337/ada.git",
-  "author": "Tonny",
+  "author": "Tony",
   "license": "MIT",
   "private": false,
   "dependencies": {
