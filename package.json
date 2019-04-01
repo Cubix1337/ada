@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Ada projects",
   "main": "index.html",
+  "scripts":{
+    "start":"yarn serve"
+  },
   "repository": "https://github.com/Cubix1337/ada.git",
   "author": "Tony",
   "license": "MIT",
