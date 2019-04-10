@@ -1,72 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
-<body>
-<canvas id='canvas'>
+  </head>
+  <body>
+    <canvas id="canvas"> </canvas>
+    <canvas id="canvas2"> </canvas>
 
-</canvas>
+    <script>
+      var canvas = document.getElementById("canvas");
+      var canvasLvl2 = document.getElementById("canvas2").style.display='none'
+      var ctx = canvas.getContext("2d");
 
+      var mouse = {
+        x: 0,
+        y: 0
+      };
 
-<script>
-var canvas = document.getElementById('canvas')
-var ctx = canvas.getContext('2d');
+      var levels = [
+        {
+          hitCount: 0,
+          toWin: 5
+        },
+        {
+          hitCount: 0,
+          toWin: 7
+        }
+      ];
 
-(function init() {
-    window.addEventListener('resize', resizeCanvas, false);
-    function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight; 
-    }
-    resizeCanvas();
-})()
+      var activeLevel = levels[0];
+      advanceScene = false;
 
-function Circle(x,y,veloX, VeloY,radius){
-    this.x = Math.random() * innerWidth,
-    this.y = Math.random() * innerHeight,
-    this.veloX = (Math.random() - 0.5) * 15,
-    this.veloY = (Math.random() - 0.5) * 15,
-    this.radius = radius;
-    this.draw = function(){
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI,false);
-    ctx.strokeStyle = 'blue'
-    ctx.stroke();
-    }
-}
+      var gameState = {
+        gameOver: false,
+        winCondition: false,
+        hitCount: activeLevel.hitCount,
+        toWin: activeLevel.toWin,
+        currentLevel: 0
+      };
 
-var circle = new Circle(0,0,0,0,50)
-console.log( circle)
-   
-function animate(){
-    requestAnimationFrame(animate)
-    ctx.clearRect(0,0,innerWidth, innerHeight)
-    circle.draw();
-   
+      canvas.addEventListener("mousemove", function(event) {
+        mouse.x = event.x;
+        mouse.y = event.y;
+      });
 
-    if(this.x + this.radius > innerWidth || this.x - this.radius < 0){
-        this.veloX = -this.veloX;
-    }
-if(this.y + this.radius > innerHeight || this.y - this.radius <0){
-    this.veloY = -this.veloY;
-}
+      canvas.addEventListener("click", function(event) {
+        advanceScene = !advanceScene;
+        console.log(advanceScene);
+      });
 
-    this.x += this.veloX;
-    this.y += this.veloY;
-}
+      (function init() {
+        window.addEventListener("resize", resizeCanvas, false);
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+      })();
 
-animate();
+      function Circle(x, y, veloX, VeloY, radius, color) {
+        (this.x = x),
+          (this.y = y),
+          (this.veloX = veloX),
+          (this.veloY = veloY),
+          (this.radius = radius),
+          (this.color = color),
+          (this.hit = false);
 
-// var x = Math.random() * innerWidth;
-// var y = Math.random() * innerHeight;
-// var veloX = (Math.random() - 0.5) * 15;
-// var veloY = (Math.random() - 0.5) * 15;
-// var radius = 40;
+        this.draw = function() {
+          if (this.hit != true) {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
+            ctx.strokeStyle = this.color;
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.stroke();
+          }
+        };
+        this.collide = function() {
+          if (this.color == "red") {
+            gameState.gameOver = true;
+            console.log("im hit");
+          }
+          if (this.color == "green" && this.hit != true) {
+            this.hit = true;
+            gameState.hitCount++;
+            gameState.hitCount == gameState.toWin
+              ? (gameState.winCondition = true)
+              : null;
+            console.log("well done", this);
+          }
+        };
+        this.update = function() {
+          if (this.x + this.radius > innerWidth || this.x - this.radius < 0) {
+            this.veloX = -this.veloX;
+          }
+          if (this.y + this.radius > innerHeight || this.y - this.radius < 0) {
+            this.veloY = -this.veloY;
+          }
 
-</script>
-</body>
+          if (
+            mouse.x - this.x < radius &&
+            mouse.x - this.x > -radius &&
+            mouse.y - this.y < radius &&
+            mouse.y - this.y > -radius
+          ) {
+            this.collide();
+          }
+
+          this.x += this.veloX;
+          this.y += this.veloY;
+
+          //
+          //   console.log(this.x, mouse.x);
+          this.draw();
+        };
+      }
+
+//red Circles
+      var circles = [];
+      for (let i = 0; i < 2; i++) {
+        var x = Math.floor(Math.random() * innerWidth) + this.radius;
+        var y = Math.random() * innerHeight + this.radius;  
+        var veloX = Math.floor(Math.random() * 10)+1;
+        var veloY = Math.floor(Math.random() * 10)+1;
+        var radius = 20;
+        var color = "red";
+        circles.push(new Circle(x, y, veloX, veloY, radius, color, hit));
+      }
+
+//green circles
+      for (let i = 0; i < gameState.toWin; i++) {
+        var x = Math.floor(Math.random() * innerWidth);
+        var y = Math.random() * innerHeight;
+        var veloX = 5;
+        var veloY = 5;
+        var radius = 50;
+        var color = "green";
+        var hit = false;
+        circles.push(new Circle(x, y, veloX, veloY, radius, color, hit));
+        console.log(circles)
+      }
+
+      function Text(x, y, fontSize, font, color, scale, text) {
+        (this.x = x),
+          (this.y = y),
+          (this.fontSize = fontSize),
+          (this.font = font),
+          (this.color = color),
+          (this.scale = scale),
+          (this.text = text),
+          (this.draw = function() {
+            ctx.font = "" + this.fontSize + "px " + this.font + "";
+            ctx.fillStyle = "" + this.color + "";
+            ctx.textAlign = "center";
+            ctx.fillText("" + this.text + "", this.x, this.y);
+          }),
+          (this.click = function() {});
+      }
+
+      (function animate() {
+        if (gameState.gameOver != true && gameState.winCondition != true) {
+          requestAnimationFrame(animate);
+          ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+          for (let index = 0; index < circles.length; index++) {
+            circles[index].update();
+          }
+          new Text(
+            125,
+            25,
+            25, 
+            "Arial",
+            "black",
+            1,
+            `Circles remaining: ${gameState.toWin - this.gameState.hitCount}`
+          ).draw();
+        }
+        if (gameState.winCondition == true) {
+          new Text(
+            innerWidth / 2,
+            innerHeight / 2,
+            200,
+            "Arial",
+            "green",
+            1,
+            "You Win!"
+          ).draw();
+
+          ctx.font = "50px Arial";
+          ctx.fillStyle = "blue";
+          ctx.fillText(
+            "Click to continue",
+            innerWidth / 2,
+            innerHeight / 2 + 100
+          );
+          advanceScene = true;
+        }
+
+//set to click trigger
+        if (gameState.winCondition ==true && advanceScene == true){
+          setTimeout(function(){canvas.style.display = 'none';canvasLvl2.style.display='block'},1000)
+        }
+
+        if (gameState.gameOver == true) {
+          new Text(
+            innerWidth / 2,
+            innerHeight / 2,
+            100,
+            "Arial",
+            "red",
+            1,
+            "You Lose"
+          ).draw();
+        }
+      })();
+    </script>
+  </body>
 </html>
