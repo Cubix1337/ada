@@ -12,7 +12,8 @@
 
     <script>
       var canvas = document.getElementById("canvas");
-      var canvasLvl2 = document.getElementById("canvas2").style.display='none'
+      var canvasLvl2 = (document.getElementById("canvas2").style.display =
+        "none");
       var ctx = canvas.getContext("2d");
 
       var mouse = {
@@ -120,29 +121,28 @@
         };
       }
 
-//red Circles
+      //red Circles
       var circles = [];
-      for (let i = 0; i < 2; i++) {
-        var x = Math.floor(Math.random() * innerWidth) + this.radius;
-        var y = Math.random() * innerHeight + this.radius;  
-        var veloX = Math.floor(Math.random() * 10)+1;
-        var veloY = Math.floor(Math.random() * 10)+1;
-        var radius = 20;
+      for (let i = 0; i < gameState.toWin + 10; i++) {
+        var x = getRandomIntInclusive(this.radius, innerWidth - this.radius);
+        var y = getRandomIntInclusive(this.radius, innerHeight - this.radius);
+        var veloX = Math.floor(Math.random() * 10) + 1;
+        var veloY = Math.floor(Math.random() * 10) + 1;
+        var radius = 30;
         var color = "red";
         circles.push(new Circle(x, y, veloX, veloY, radius, color, hit));
       }
 
-//green circles
+      //green circles
       for (let i = 0; i < gameState.toWin; i++) {
-        var x = Math.floor(Math.random() * innerWidth);
-        var y = Math.random() * innerHeight;
-        var veloX = 5;
+        var x = getRandomIntInclusive(this.radius, innerWidth - this.radius);
+        var y = getRandomIntInclusive(this.radius, innerHeight - this.radius);
         var veloY = 5;
-        var radius = 50;
+        var radius = 30;
         var color = "green";
         var hit = false;
         circles.push(new Circle(x, y, veloX, veloY, radius, color, hit));
-        console.log(circles)
+        console.log(circles);
       }
 
       function Text(x, y, fontSize, font, color, scale, text) {
@@ -173,7 +173,7 @@
           new Text(
             125,
             25,
-            25, 
+            25,
             "Arial",
             "black",
             1,
@@ -201,9 +201,12 @@
           advanceScene = true;
         }
 
-//set to click trigger
-        if (gameState.winCondition ==true && advanceScene == true){
-          setTimeout(function(){canvas.style.display = 'none';canvasLvl2.style.display='block'},1000)
+        //set to click trigger
+        if (gameState.winCondition == true && advanceScene == true) {
+          setTimeout(function() {
+            canvas.style.display = "none";
+            canvasLvl2.style.display = "block";
+          }, 1000);
         }
 
         if (gameState.gameOver == true) {
@@ -216,8 +219,15 @@
             1,
             "You Lose"
           ).draw();
+          activeLevel = levels[0];
         }
       })();
+
+      function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
+      }
     </script>
   </body>
 </html>
